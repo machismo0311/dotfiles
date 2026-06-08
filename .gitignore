@@ -5,8 +5,8 @@
 !.gitignore
 !CLAUDE.md
 
-# Dotfiles worth tracking (uncomment to add)
-#!.bashrc
-#!.bash_logout
-#!.profile
-#!.gitconfig
+# Dotfiles
+!.bashrc
+!.bash_logout
+!.profile
+!.gitconfig
