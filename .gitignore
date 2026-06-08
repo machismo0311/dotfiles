@@ -4,6 +4,7 @@
 # Always allow these
 !.gitignore
 !CLAUDE.md
+!README.md
 
 # Dotfiles
 !.bashrc
