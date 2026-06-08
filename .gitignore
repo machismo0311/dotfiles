@@ -15,5 +15,13 @@
 !Vaults/
 !Vaults/**
 
-# Submodules
+# Submodules and projects
 !Home-Lab
+!kylemason.org
+!manstuffco
+!claude-desktop-debian
+!pacextractor
+!CVE-2022-38694_unlock_bootloader
+!spreadtrum_flash
+!jobscraper
+!jobscraper/**

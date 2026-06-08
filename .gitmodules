@@ -1,3 +1,21 @@
 [submodule "Home-Lab"]
 	path = Home-Lab
 	url = git@github.com:machismo0311/Home-Lab.git
+[submodule "kylemason.org"]
+	path = kylemason.org
+	url = https://github.com/machismo0311/kylemason.org.git
+[submodule "manstuffco"]
+	path = manstuffco
+	url = https://github.com/machismo0311/Manstuffco.git
+[submodule "claude-desktop-debian"]
+	path = claude-desktop-debian
+	url = https://github.com/aaddrick/claude-desktop-debian.git
+[submodule "pacextractor"]
+	path = pacextractor
+	url = https://github.com/divinebird/pacextractor
+[submodule "CVE-2022-38694_unlock_bootloader"]
+	path = CVE-2022-38694_unlock_bootloader
+	url = https://github.com/TomKing062/CVE-2022-38694_unlock_bootloader
+[submodule "spreadtrum_flash"]
+	path = spreadtrum_flash
+	url = https://github.com/TomKing062/spreadtrum_flash
