@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Context
 
-This is the home directory of Kyle Mason (masonkr@gmail.com), a Greater Cleveland, OH-based individual. It is tracked as the `machismo0311/dotfiles` git repo (private). Each subdirectory is an independent project — there is no single build system or test runner at this level.
+This is the home directory of Kyle Mason (masonkr@gmail.com), a Greater Cleveland, OH-based individual. It is tracked as the `machismo0311/dotfiles` git repo (public). Each subdirectory is an independent project — there is no single build system or test runner at this level.
 
 ## Repo Structure
 
