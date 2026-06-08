@@ -1,0 +1,3 @@
+[submodule "Home-Lab"]
+	path = Home-Lab
+	url = git@github.com:machismo0311/Home-Lab.git
