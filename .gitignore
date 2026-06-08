@@ -1,0 +1,12 @@
+# Ignore everything by default — whitelist what should be tracked
+*
+
+# Always allow these
+!.gitignore
+!CLAUDE.md
+
+# Dotfiles worth tracking (uncomment to add)
+#!.bashrc
+#!.bash_logout
+#!.profile
+#!.gitconfig
