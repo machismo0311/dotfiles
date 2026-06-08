@@ -85,9 +85,10 @@ set protocols rstp bridge-priority 4096
 
 ### Management IP (VLAN 10)
 ```junos
-set interfaces irb unit 10 family inet address 10.0.10.2/24
+# NOTE: was .2 — renumbered 2026-06-05 due to IP conflict (see Incidents below)
+set interfaces irb unit 10 family inet address 192.168.10.50/24
 set vlans MGMT l3-interface irb.10
-set routing-options static route 0.0.0.0/0 next-hop 10.0.10.1
+set routing-options static route 0.0.0.0/0 next-hop 192.168.10.1
 ```
 
 ---
@@ -104,10 +105,11 @@ set routing-options static route 0.0.0.0/0 next-hop 10.0.10.1
 | ge-0/0/24–27 | Mac mini + RPi 4 | Access | COMPUTE / IOT |
 | ge-0/0/28–35 | Available / future | — | — |
 | ge-0/0/36–39 | Cisco CP-8841 phones ×5 | Access | VOIP |
+| ge-0/0/32 | Copper uplink → UniFi USW-24 (1G, working) | Trunk | All |
 | ge-0/0/44 | NetApp DS4246 mgmt | Access | MGMT |
 | ge-0/0/45 | Uplink to EX2300 | Trunk | All |
 | ge-0/0/46 | Uplink to OPNsense/Proxmox | Trunk | All |
-| xe-0/0/0 | DAC to UniFi USW-24 | Trunk | All |
+| xe-0/2/3 | DAC → UniFi SFP 2 (10G, ⚠️ DOWN — speed mismatch) | Trunk | All |
 
 ---
 
@@ -151,6 +153,38 @@ show log messages | last 50
 > request system software add /var/tmp/junos-arm-32-20.x.Rx.tgz
 > request system reboot
 > ```
+
+---
+
+## Incidents
+
+### ✅ SSH Authentication Failure — RESOLVED 2026-06-05
+
+**Symptom:** SSH always rejected — appeared to be an auth failure.  
+**Actual root causes (two, unrelated to auth):**
+1. Ares had no IP on the management subnet (DHCP, no server) → `Network is unreachable` before SSH even connected
+2. Stale SSH host key in `~/.ssh/known_hosts:14` after switch was re-keyed → `Host key verification failed`
+
+**Fixes:**
+```bash
+# 1. Set static IP on Ares wired interface
+sudo nmcli con mod "Wired connection 1" ipv4.method manual ipv4.addresses 192.168.10.11/24 ipv4.gateway 192.168.10.1
+sudo nmcli con up "Wired connection 1"
+
+# 2. Clear stale host key
+ssh-keygen -R 192.168.10.2
+```
+mason authenticated first attempt — credential was never broken.
+
+**Post-login work done:** passwords rotated (root + mason), NTP configured (`162.159.200.123`), timezone set (`America/New_York`), management IP renumbered from `.2` to `.50` (IP conflict — `.2` was occupied by another device, MAC `78:45:58:bf:3f:ee`), copper uplink (`ge-0/0/32`) patched to UniFi to resolve switch island.
+
+**Open items:**
+- ⚠️ DAC uplink `xe-0/2/3` still down — EX3400 reads DAC as 10G, UniFi reads as 1G (EEPROM mismatch). Fix: replace with 10G SFP+ optics + LC fiber on both ends.
+- Identify device at `192.168.10.2` (MAC `78:45:58:bf:3f:ee`) and assign it a documented address.
+- Add DHCP reservation in OPNsense for Ares (MAC `8c:ec:4b:f1:86:a5`).
+- JunOS upgrade: current 20.2R3.9 → JTAC-recommended 23.4R2-S7 (non-urgent).
+
+See full post-mortem: `Home-Lab/docs/EX3400-SSH-Auth-Failure-RCA.md`
 
 ---
 

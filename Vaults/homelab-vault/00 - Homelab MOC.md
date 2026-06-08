@@ -1,6 +1,6 @@
 # 🖥️ Homelab — Master Map of Content
 > **Operator:** Kyle Mason (`machismo`) · **Location:** Vermilion / Greater Cleveland, OH  
-> **Cabinet:** NetFRAME CS9000 42U · **Last Updated:** 2026-05-17
+> **Cabinet:** NetFRAME CS9000 42U · **Last Updated:** 2026-06-08
 
 ---
 
@@ -97,6 +97,8 @@ mindmap
 - [x] Finalize rack layout (v10)
 - [x] Middle Atlantic UPS-2200R installed (bottom anchor)
 - [x] Juniper EX3400 acquired & Junos fundamentals covered
+- [x] EX3400 SSH issue resolved & switch on production network (2026-06-05)
+- [ ] DAC 10G uplink (xe-0/2/3 → UniFi SFP 2) — replace DAC with fiber optics
 - [ ] Install both Dell R730s (rear panel removed — depth issue resolved)
 - [ ] Cable management pass after all hardware seated
 - [ ] Stand up Proxmox cluster (full mesh)
