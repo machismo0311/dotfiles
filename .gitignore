@@ -10,3 +10,7 @@
 !.bash_logout
 !.profile
 !.gitconfig
+
+# Vaults
+!Vaults/
+!Vaults/**
