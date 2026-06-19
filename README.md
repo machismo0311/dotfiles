@@ -36,6 +36,7 @@ Personal dotfiles and project index for Kyle Mason (`machismo0311`).
 |---|---|
 | `jobscraper/` | Python script that scrapes remote job listings and generates a static HTML page |
 | `Vaults/homelab-vault/` | Obsidian vault with homelab notes (also in `Home-Lab/vault/`) |
+| `quarkylab/gpu-fan-control/` | temperature-driven chassis fan control for QuarkyLab's R730 + RTX 6000; replaces iDRAC's panic-ramp on the non-Dell GPU and fails safe to iDRAC auto |
 
 ## Cloning
 

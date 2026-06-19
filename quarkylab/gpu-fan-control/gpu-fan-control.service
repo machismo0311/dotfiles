@@ -1,0 +1,14 @@
+[Unit]
+Description=Dynamic GPU-aware chassis fan control (R730 + RTX 6000)
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/sbin/gpu-fan-control.sh
+Restart=on-failure
+RestartSec=15
+TimeoutStopSec=20
+KillSignal=SIGTERM
+
+[Install]
+WantedBy=multi-user.target
