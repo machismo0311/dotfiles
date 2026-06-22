@@ -4,6 +4,7 @@
 # Always allow these
 !.gitignore
 !CLAUDE.md
+!CLAUDE.netframe.md
 !README.md
 
 # Dotfiles
