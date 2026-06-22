@@ -30,7 +30,7 @@ git push
 ### Direct files
 - `jobscraper/` — single-script Python project with no upstream remote
 - `Vaults/homelab-vault/` — Obsidian vault (also copied into `Home-Lab/vault/`)
-- Dotfiles: `.bashrc`, `.profile`, `.bash_logout`, `.gitconfig`
+- Dotfiles: `.bashrc`, `.bash_aliases`, `.profile`, `.bash_logout`, `.gitconfig`, `.ssh/config`, `CLAUDE.md`
 
 ## Key Projects
 
@@ -42,11 +42,12 @@ Unofficial Linux build scripts for Claude Desktop, producing `.deb`, `.rpm`, App
 - Shell style: tabs for indentation, `[[ ]]` conditionals, lowercase variables, no `set -e`
 
 ### `Home-Lab/`
-Homelab documentation for a multi-node Proxmox cluster (5 EliteDesk/Mac Mini nodes), Juniper switching, and planned services. Also contains the Obsidian vault at `Home-Lab/vault/`.
+Homelab documentation for a 7-node Proxmox VE 9.1 cluster (km-cluster) — R730s, SuperMicro Randy, EliteDesk nodes, Juniper switching, and services. Also contains the Obsidian vault at `Home-Lab/vault/`.
 
-- Proxmox web UI: `https://192.168.1.193:8006` (local) or `https://100.116.237.31:8006` (Tailscale)
-- Pi-hole admin: `http://192.168.1.47/admin` (primary), `192.168.1.170` (backup Raspberry Pi 4)
-- EX3400 management: `192.168.10.50` (renumbered 2026-06-05)
+- Proxmox web UI: `https://192.168.10.193:8006` (local) or `https://100.116.237.31:8006` (Tailscale)
+- Pi-hole admin: `http://192.168.10.177/admin`
+- EX3400 management: `192.168.10.50`
+- PBS: `https://192.168.10.187:8007`
 
 ### `jobscraper/`
 Single-file Python script that fetches remote job listings from RemoteOK and We Work Remotely and generates a static `jobs.html`.
