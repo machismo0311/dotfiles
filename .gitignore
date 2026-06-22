@@ -12,6 +12,8 @@
 !.bash_logout
 !.profile
 !.gitconfig
+!.ssh/
+!.ssh/config
 
 # Vaults
 !Vaults/
