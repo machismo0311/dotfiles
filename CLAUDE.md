@@ -29,7 +29,7 @@ git push
 
 ### Direct files
 - `jobscraper/` — single-script Python project with no upstream remote
-- `Vaults/homelab-vault/` — Obsidian vault (also copied into `Home-Lab/vault/`)
+- `Vaults/homelab-vault/` — Obsidian vault, **mirrored** into `Home-Lab/vault/`. Keep the two copies byte-identical: edit both, then commit `Home-Lab/vault/` inside the submodule (push to its remote + update the pointer here) and `Vaults/homelab-vault/` directly in dotfiles. A `diff -rq` between them should be empty.
 - Dotfiles: `.bashrc`, `.bash_aliases`, `.profile`, `.bash_logout`, `.gitconfig`, `.ssh/config`, `CLAUDE.md`
 
 ## Key Projects
@@ -42,9 +42,9 @@ Unofficial Linux build scripts for Claude Desktop, producing `.deb`, `.rpm`, App
 - Shell style: tabs for indentation, `[[ ]]` conditionals, lowercase variables, no `set -e`
 
 ### `Home-Lab/`
-Homelab documentation for a 7-node Proxmox VE 9.1 cluster (km-cluster) — R730s, SuperMicro Randy, EliteDesk nodes, Juniper switching, and services. Also contains the Obsidian vault at `Home-Lab/vault/`.
+Homelab documentation for a 7-node Proxmox VE 9.2.3 cluster (km-cluster) — R730s (QuarkyLab=ML/RTX 6000→RTX 8000 planned, Jarvis=LLM/2× RTX 6000 planned — GPU SW stack staged), SuperMicro Randy (PBS/storage), EliteDesk nodes (pve2–pve5), Juniper switching, and services. **Has its own detailed `CLAUDE.md`** — read it before working in the homelab; it carries the authoritative node/IP/service tables and safety notes. Also contains the Obsidian vault at `Home-Lab/vault/`.
 
-- Proxmox web UI: `https://192.168.10.193:8006` (local) or `https://100.116.237.31:8006` (Tailscale)
+- Proxmox web UI: any cluster node on `:8006`, e.g. pve3 `https://192.168.10.201:8006`. Note `192.168.10.193` / Tailscale `100.116.237.31` is **pve1**, a standalone Mac Mini (Pi-hole host), *not* a km-cluster member.
 - Pi-hole admin: `http://192.168.10.177/admin`
 - EX3400 management: `192.168.10.50`
 - PBS: `https://192.168.10.187:8007`
